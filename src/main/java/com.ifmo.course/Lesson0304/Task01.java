@@ -12,6 +12,7 @@ public class Task01 {
         for (int i = 0; i < m1.length; i++) {
             m1[i] = (int) ((Math.random() * (max - min + 1)) + min);
         }
+
         System.out.println(Arrays.toString(m1)); //смотрим на получившийся массив m1
         Arrays.sort(m1); // сортируем элементы массива m1 от минимума к максимуму
         System.out.println(Arrays.toString(m1)); //смотрим на получившийся отсортированный массив m1
