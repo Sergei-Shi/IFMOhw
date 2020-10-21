@@ -21,42 +21,56 @@ public class Task01 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("введите свои данные (Имя Фамилию и первую букву должности). например: Ivan Petrov d");
-        String svedenija = scanner.nextLine();
+        while (true){
+            System.out.println("введите свои данные (Имя Фамилию и первую букву должности). например: Ivan Petrov d");
+            String svedenija = scanner.nextLine();
 
-        //String svedenija = "Ivan Petrov d";
-        String[] svedenijaArr  = svedenija.split(" ");
+            //String svedenija = "Ivan Petrov d";
+            String[] svedenijaArr  = svedenija.split(" ");
 
-        String name = svedenijaArr[0] + svedenijaArr[1];
-        int zp = (int) (Math.random() * (100 - 10) + 10);
+            String name = svedenijaArr[0] + svedenijaArr[1];
+            int zp = (int) (Math.random() * (100 - 10) + 10);
 
-        User user = new User(name, zp);
+            String pos = svedenijaArr[2];
+            Position p = null;
+            switch (pos){
+                case "d":
+                    p = Position.valueOf("DIRECTOR");
+                    break;
+                case "u":
+                     p = Position.valueOf("UBORCHIK");
+                    break;
+                case "v":
+                    p = Position.valueOf("VRACH");
+                    break;
+                default:
+            }
 
-        String pos = svedenijaArr[2];
-        switch (pos){
-            case "d":
-                for (int i = 0; i < directora.length; i++) {
-                    if (directora[i] == null) {
-                        directora[i] = user;
+            User user = new User(name, zp, p);
+
+            switch (pos){
+                case "d":
+                    for (int i = 0; i < directora.length; i++) {
+                        if (directora[i] == null) {directora[i] = user;}
+                        else if (i == directora.length - 1 && directora[i] != null) {System.out.println("vacansij net");}
                     }
-                }
-                break;
-            case "u":
-                for (int i = 0; i < uborshiki.length; i++) {
-                    if (uborshiki[i] == null) {
-                        uborshiki[i] = user;
+                    break;
+                case "u":
+                    for (int i = 0; i < uborshiki.length; i++) {
+                        if (uborshiki[i] == null) {uborshiki[i] = user;}
+                        else if (i == uborshiki.length - 1 && uborshiki[i] != null) {System.out.println("vacansij net");}
                     }
-                }
-                break;
-            case "v":
-                for (int i = 0; i < vrachi.length; i++) {
-                    if (vrachi[i] == null) {
-                        vrachi[i] = user;
+                    break;
+                case "v":
+                    for (int i = 0; i < vrachi.length; i++) {
+                        if (vrachi[i] == null) {vrachi[i] = user;}
+                        else if (i == vrachi.length - 1 && vrachi[i] != null) {System.out.println("vacansij net");}
                     }
-                }
-                break;
-            default:
+                    break;
+                default:
+            }
         }
+
 
     }
 }
@@ -65,10 +79,10 @@ public class Task01 {
     private int salary;
     private Position position;
 
-        public User(String fulName, int salary) {
+        public User(String fulName, int salary, Position position) {
             this.fulName = fulName;
             this.salary = salary;
-
+            this.position = position;
         }
 
         public String getFulName() {
