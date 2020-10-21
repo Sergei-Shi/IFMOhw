@@ -37,4 +37,9 @@ public enum Task02 {
     public void setRadiusOrbit(int radiusOrbit) {
         this.radiusOrbit = radiusOrbit;
     }
+
+    public String getInfo(){
+        return "massa: " + massa + " radiusPlanet: " + radiusPlanet + " radiusOrbit: " + radiusOrbit;
+    }
+
 }
