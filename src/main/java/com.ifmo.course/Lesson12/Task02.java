@@ -16,7 +16,7 @@ public class Task02 {
     и тд*/
 
     public static void main(String[] args) {
-        Exception[] exepArr = new Exception[9];
+        Exception[] exepArr = new Exception[5];
         //1. ArrayIndexOutOfBoundsException Индекс массива выходит за пределы поля.
         try {
             int[] arr = new int[5];
@@ -30,7 +30,7 @@ public class Task02 {
         } catch (ArithmeticException a){
             exepArr[1] = a;
         }
-        //3. NullPointerException
+        //3. NullPointerException обращение к методу или полю объекта по ссылке, которая равна null
         try {
             String a = null;
             a.length();
@@ -50,6 +50,7 @@ public class Task02 {
         } catch (IllegalArgumentException a){
             exepArr[4] = a;
         }
+
 
         //System.out.println(Arrays.toString(exepArr));
 
